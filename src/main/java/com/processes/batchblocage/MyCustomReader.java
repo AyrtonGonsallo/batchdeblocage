@@ -11,7 +11,6 @@ import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-
 import com.processes.batchblocage.primary.*;
 @Component
 public class MyCustomReader extends JdbcCursorItemReader<Transfert> implements ItemReader<Transfert>{
@@ -73,12 +72,22 @@ public class MyCustomReader extends JdbcCursorItemReader<Transfert> implements I
 			}else{
 				transfert.setTypeFrais(null);
 			}
-			
-			/*transfert.setAgent(aR.getById(rs.getLong("agent_id ")));
-			transfert.setBeneficiaire(bR.getById(rs.getLong("beneficiaire_id ")));
-			transfert.setEmetteur(eR.getById(rs.getLong("emetteur_id ")));
+			transfert.setAgent(aR.findByIdClient(rs.getLong("agent_id")));
+			transfert.setBeneficiaire(bR.findByIdClient(rs.getLong("beneficiaire_id")));
+			transfert.setEmetteur(eR.findByIdClient(rs.getLong("emetteur_id")));
 			transfert.setLieuDeDemande(pdvR.getById(rs.getLong("lieuDeDemande")));
 			transfert.setLieuDeService(pdvR.getById(rs.getLong("lieuDeService")));
+			
+			/*
+			if(rowNum==1){
+				System.out.println("colones  ...");
+				java.sql.ResultSetMetaData md=rs.getMetaData();
+				for(int i=1;i<md.getColumnCount();i++){
+					System.out.println(md.getColumnName(i)+" "+ md.getColumnTypeName(i));
+				}
+			}
+			
+			
 			transfert.setTransfertMultiple(tmR.getById(rs.getLong("transfert_multiple_id ")));*/
 			return transfert;
 		}

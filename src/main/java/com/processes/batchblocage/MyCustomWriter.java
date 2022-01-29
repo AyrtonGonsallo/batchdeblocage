@@ -23,8 +23,7 @@ public class MyCustomWriter implements ItemWriter<Transfert> {
 	public void write(List<? extends Transfert> listeT) throws Exception {
 		for(Transfert t:listeT){
 			if(t!=null){
-				//System.out.println("\n transfert bloqué :"+t.getCodePin()+" de montant "+t.getMontant_transfert()+" expirant le"+t.getDelai_de_validite()+" d´emetteur "+t.getEmetteur().getNom()+" "+t.getEmetteur().getPrenom()+" de beneficiaire "+t.getBeneficiaire().getNom()+" "+t.getBeneficiaire().getPrenom());
-				System.out.println("\n transfert bloqué :"+t.getId()+" de montant "+t.getMontant_transfert()+" expirant le "+t.getDelai_de_validite());
+				System.out.println("\n transfert bloqué :"+t.getCodePin()+" de montant "+t.getMontant_transfert()+" expirant le "+t.getDelai_de_validite()+" d´emetteur "+t.getEmetteur().getNom()+" "+t.getEmetteur().getPrenom()+" de beneficiaire "+t.getBeneficiaire().getNom()+" "+t.getBeneficiaire().getPrenom());
 				tR.save(t);
 			}
 		}

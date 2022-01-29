@@ -8,12 +8,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 @Entity
 @Table(name="Transfert")
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class Transfert {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@JsonProperty(access=Access.READ_ONLY)
